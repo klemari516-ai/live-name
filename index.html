@@ -9,6 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 html,body{
   width:100%;
   height:100%;
@@ -20,31 +21,48 @@ html,body{
 #app{
   width:100%;
   height:100%;
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:center;
-  position:relative;
 }
 
-/* LOGO */
+/* LOGO SUPER GEDE */
 #logo{
-  font-size:72px;
-  max-width:92vw;
+  font-size:96px;               /* 🔥 LEBIH GEDE */
+  max-width:94vw;
   text-align:center;
-  padding:26px 42px;
-  border-radius:44px;
-  background:rgba(255,255,255,.25);
+  padding:30px 50px;
+  border-radius:50px;
+  background:rgba(255,255,255,.28);
   color:#3aa7ff;
   text-shadow:
-    3px 3px 0 #fff,
-    6px 6px 0 rgba(0,0,0,.15);
+    4px 4px 0 #fff,
+    8px 8px 0 rgba(0,0,0,.15);
   animation:pop .35s ease;
   word-break:break-word;
 }
 
 @keyframes pop{
-  from{transform:scale(.88)}
+  from{transform:scale(.85)}
   to{transform:scale(1)}
+}
+
+/* PARTIKEL */
+.particle{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:white;
+  border-radius:50%;
+  opacity:.55;
+  animation:float 6s infinite ease-in-out;
+}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-20px)}
+  100%{transform:translateY(0)}
 }
 
 /* INPUT INVISIBLE */
@@ -54,22 +72,22 @@ html,body{
   caret-color:transparent;
 }
 
-/* REKAP MINI */
+/* REKAP MINI KIRI */
 #rekap{
   position:absolute;
   top:6px;
   left:6px;
-  width:58px;
-  font-size:8px;
-  background:rgba(255,255,255,.4);
-  border-radius:7px;
-  padding:3px;
+  width:65px;
+  font-size:9px;
+  background:rgba(255,255,255,.45);
+  border-radius:8px;
+  padding:4px;
 }
 
 #rekap b{
   display:block;
   text-align:center;
-  font-size:8px;
+  font-size:9px;
   margin-bottom:2px;
 }
 
@@ -81,13 +99,19 @@ html,body{
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  line-height:1.15;
+  line-height:1.2;
 }
 </style>
 </head>
 
 <body>
 <div id="app" onclick="focusInput()">
+
+  <!-- PARTIKEL -->
+  <div class="particle" style="top:20%;left:25%"></div>
+  <div class="particle" style="top:35%;right:30%"></div>
+  <div class="particle" style="bottom:28%;left:32%"></div>
+  <div class="particle" style="bottom:20%;right:26%"></div>
 
   <div id="logo">NAMA</div>
 
@@ -114,7 +138,10 @@ function focusInput(){
 }
 
 function randomColor(){
-  const c=["#3aa7ff","#ff7ad9","#6ee7b7","#ffd166","#c77dff","#ff8fab"];
+  const c=[
+    "#3aa7ff","#ff7ad9","#6ee7b7",
+    "#ffd166","#c77dff","#ff8fab"
+  ];
   return c[Math.floor(Math.random()*c.length)];
 }
 
@@ -134,7 +161,7 @@ input.addEventListener("keydown",e=>{
     sound.play();
 
     names.push(val);
-    if(names.length>10) names=[];
+    if(names.length>20) names=[];   // 🔥 20 NAMA RESET
 
     render();
     input.value="";
